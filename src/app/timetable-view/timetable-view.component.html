@@ -1,0 +1,41 @@
+<div class="container">
+    <h2>Timetable Overview</h2>
+  
+    <h3>Rooms</h3>
+    <ul>
+      <li *ngFor="let room of rooms">
+        {{ room.room_name }} ({{ room.capacity }} seats) - {{ room.building }} Floor {{ room.floor }}
+      </li>
+    </ul>
+  
+    <h3>Teachers</h3>
+    <ul>
+      <li *ngFor="let teacher of teachers">
+        {{ teacher.first_name }} {{ teacher.last_name }} - {{ teacher.department }} ({{ teacher.email }})
+      </li>
+    </ul>
+  
+    <h3>Subjects</h3>
+    <ul>
+      <li *ngFor="let subject of subjects">
+        {{ subject.subject_name }} ({{ subject.subject_code }}) - {{ subject.department }}
+      </li>
+    </ul>
+  
+    <h3>Classes</h3>
+    <ul>
+      <li *ngFor="let classItem of classes">
+        {{ classItem.class_name }} - Students: {{ classItem.students.join(', ') }}
+      </li>
+    </ul>
+  
+    <h3>Sessions</h3>
+    <ul>
+      <li *ngFor="let session of sessions">
+        {{ session.subject_id }} ({{ session.session_date }} - {{ session.start_time }} to {{ session.end_time }}) 
+        | Teacher: {{ teachers.find(t => t.teacher_id === session.teacher_id)?.first_name }} 
+        | Room: {{ rooms.find(r => r.room_id === session.room_id)?.room_name }}
+      </li>
+    </ul>
+  </div>
+  
